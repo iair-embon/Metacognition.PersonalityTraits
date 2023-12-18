@@ -19,7 +19,7 @@ sum_a <- summary(a)
 term <- term <- c("Anxiousness", "EmotionalLability")
 coeff <- c(unname(sum_a$coefficients$mean[3,"Estimate"]),unname(sum_a$coefficients$mean[10,"Estimate"]))
 se <- c(unname(sum_a$coefficients$mean[3,"Std. Error"]), unname(sum_a$coefficients$mean[10,"Std. Error"]))
-model <- rep("beta multivariate",2)
+model <- rep("beta multitrait",2)
 
 
 df.models <- data.frame(terms = term,
@@ -27,7 +27,7 @@ df.models <- data.frame(terms = term,
                         se = se,
                         model = model)
 
-### reg univariate beta
+### reg unitrait beta
 
 # Anxiety 
 
@@ -38,7 +38,7 @@ sum_a <- summary(a)
 term <- "Anxiousness"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -56,7 +56,7 @@ sum_a <- summary(a)
 term <- "EmotionalLability"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -86,8 +86,8 @@ df.models <- rbind(df.models, df.elastic)
 
 df.models <- df.models %>%
   mutate(model = fct_relevel(model,
-                             "beta multivariate",
-                             "beta univariate",
+                             "beta multitrait",
+                             "beta unitrait",
                              "elastic-net"
                              ))
 

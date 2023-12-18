@@ -19,7 +19,7 @@ sum_a <- summary(a)
 term <- c("Grandiosity", "Hostility", "Impulsivity", "PerceptualDysregulation", "RestrictedAffectivity", "SeparationInsecurity", "Submissiveness")
 coeff <- c(unname(sum_a$coefficients$mean[11,"Estimate"]),unname(sum_a$coefficients$mean[12,"Estimate"]), unname(sum_a$coefficients$mean[13,"Estimate"]), unname(sum_a$coefficients$mean[17,"Estimate"]),unname(sum_a$coefficients$mean[19,"Estimate"]),unname(sum_a$coefficients$mean[22,"Estimate"]),unname(sum_a$coefficients$mean[23,"Estimate"]))
 se <- c(unname(sum_a$coefficients$mean[11,"Std. Error"]), unname(sum_a$coefficients$mean[12,"Std. Error"]), unname(sum_a$coefficients$mean[13,"Std. Error"]), unname(sum_a$coefficients$mean[17,"Std. Error"]),unname(sum_a$coefficients$mean[19,"Std. Error"]),unname(sum_a$coefficients$mean[22,"Std. Error"]),unname(sum_a$coefficients$mean[23,"Std. Error"]))
-model <- rep("beta multivariate",7)
+model <- rep("beta multitrait",7)
 
  
 df.models <- data.frame(terms = term,
@@ -28,7 +28,7 @@ df.models <- data.frame(terms = term,
                         model = model)
 
 
-### reg univariate beta
+### reg unitrait beta
 
 # Grandiosity 
 
@@ -39,7 +39,7 @@ sum_a <- summary(a)
 term <- "Grandiosity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -58,7 +58,7 @@ sum_a <- summary(a)
 term <- "Hostility"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -76,7 +76,7 @@ sum_a <- summary(a)
 term <- "Impulsivity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -94,7 +94,7 @@ sum_a <- summary(a)
 term <- "PerceptualDysregulation"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -112,7 +112,7 @@ sum_a <- summary(a)
 term <- "RestrictedAffectivity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -130,7 +130,7 @@ sum_a <- summary(a)
 term <- "SeparationInsecurity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -148,7 +148,7 @@ sum_a <- summary(a)
 term <- "Submissiveness"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta univariate"
+model <- "beta unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -179,8 +179,8 @@ df.models <- rbind(df.models, df.elastic)
 
 df.models <- df.models %>%
   mutate(model = fct_relevel(model,
-                             "beta multivariate",
-                             "beta univariate",
+                             "beta multitrait",
+                             "beta unitrait",
                              "elastic-net"
                              ))
 
