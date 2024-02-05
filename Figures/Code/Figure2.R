@@ -19,7 +19,7 @@ sum_a <- summary(a)
 term <- c("Grandiosity", "Hostility", "Impulsivity", "PerceptualDysregulation", "RestrictedAffectivity", "SeparationInsecurity", "Submissiveness")
 coeff <- c(unname(sum_a$coefficients$mean[11,"Estimate"]),unname(sum_a$coefficients$mean[12,"Estimate"]), unname(sum_a$coefficients$mean[13,"Estimate"]), unname(sum_a$coefficients$mean[17,"Estimate"]),unname(sum_a$coefficients$mean[19,"Estimate"]),unname(sum_a$coefficients$mean[22,"Estimate"]),unname(sum_a$coefficients$mean[23,"Estimate"]))
 se <- c(unname(sum_a$coefficients$mean[11,"Std. Error"]), unname(sum_a$coefficients$mean[12,"Std. Error"]), unname(sum_a$coefficients$mean[13,"Std. Error"]), unname(sum_a$coefficients$mean[17,"Std. Error"]),unname(sum_a$coefficients$mean[19,"Std. Error"]),unname(sum_a$coefficients$mean[22,"Std. Error"]),unname(sum_a$coefficients$mean[23,"Std. Error"]))
-model <- rep("beta multitrait",7)
+model <- rep("Beta Multitrait",7)
 
  
 df.models <- data.frame(terms = term,
@@ -39,7 +39,7 @@ sum_a <- summary(a)
 term <- "Grandiosity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta unitrait"
+model <- "Beta Unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -58,7 +58,7 @@ sum_a <- summary(a)
 term <- "Hostility"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta unitrait"
+model <- "Beta Unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -76,7 +76,7 @@ sum_a <- summary(a)
 term <- "Impulsivity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta unitrait"
+model <- "Beta Unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -94,7 +94,7 @@ sum_a <- summary(a)
 term <- "PerceptualDysregulation"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta unitrait"
+model <- "Beta Unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -112,7 +112,7 @@ sum_a <- summary(a)
 term <- "RestrictedAffectivity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta unitrait"
+model <- "Beta Unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -130,7 +130,7 @@ sum_a <- summary(a)
 term <- "SeparationInsecurity"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta unitrait"
+model <- "Beta Unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -148,7 +148,7 @@ sum_a <- summary(a)
 term <- "Submissiveness"
 coeff <- unname(sum_a$coefficients$mean[2,"Estimate"])
 se <- unname(sum_a$coefficients$mean[2,"Std. Error"])
-model <- "beta unitrait"
+model <- "Beta Unitrait"
 
 df.beta <- data.frame(terms = term,
                       coeff = coeff,
@@ -164,7 +164,7 @@ load(file= filepath)
 term <- term <- term <- c("Grandiosity", "Hostility", "Impulsivity", "PerceptualDysregulation", "RestrictedAffectivity", "SeparationInsecurity", "Submissiveness")
 coeff <- c(a[12],a[13],a[14],a[18], a[20],a[23],a[24])
 se <- rep(0,7) ## sd is not usefull in regularized regressions, could cause misinterpretations
-model <- rep("elastic-net",7)
+model <- rep("Elastic-Net",7)
 
 df.elastic <- data.frame(terms = term,
                          coeff = coeff,
@@ -179,9 +179,9 @@ df.models <- rbind(df.models, df.elastic)
 
 df.models <- df.models %>%
   mutate(model = fct_relevel(model,
-                             "beta multitrait",
-                             "beta unitrait",
-                             "elastic-net"
+                             "Beta Multitrait",
+                             "Beta Unitrait",
+                             "Elastic-Net"
                              ))
 
 
@@ -194,7 +194,7 @@ ggplot(df.models , aes(coeff, terms, color=model)) +
   scale_color_manual(name="model",
                      values=c("darkred", "darkblue", "darkgreen")) +
   scale_shape_manual(name="model",values=c(17,18,19)) + 
-  scale_x_continuous("regression coefficients") +
+  scale_x_continuous("Regression Coefficients") +
   scale_y_discrete(labels= c("Grandiosity",
                              "Hostility",
                              "Impulsivity",
